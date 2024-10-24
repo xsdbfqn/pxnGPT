@@ -57,7 +57,8 @@
     <div class="response-box" id="response"></div>
 </div>
 
-async function sendRequest() {
+<script>
+    async function sendRequest() {
     const prompt = document.getElementById('userInput').value;
     const apiUrl = `https://dns0000033zzh2aa-dev-ed.develop.my.salesforce-sites.com/services/apexrest/firstwebservice?prompt=${encodeURIComponent(prompt)}&apikey=pxn`;
 
@@ -73,6 +74,8 @@ async function sendRequest() {
         document.getElementById('response').innerText = `错误: ${error.message}`;
     }
 }
+
+</script>
 
 </body>
 </html>
