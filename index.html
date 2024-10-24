@@ -57,8 +57,7 @@
     <div class="response-box" id="response"></div>
 </div>
 
-<script>
-    async function sendRequest() {
+async function sendRequest() {
     const prompt = document.getElementById('userInput').value;
     const apiUrl = `https://dns0000033zzh2aa-dev-ed.develop.my.salesforce-sites.com/services/apexrest/firstwebservice?prompt=${encodeURIComponent(prompt)}&apikey=pxn`;
 
@@ -67,13 +66,13 @@
         if (!response.ok) {
             throw new Error('请求失败');
         }
-        const data = await response.text();  // 获取纯文本
-        document.getElementById('response').innerText = `${data}`;
+        let data = await response.text();  // 获取纯文本
+        data = data.replace(/^"(.*)"$/, '$1');  // 去掉可能的引号
+        document.getElementById('response').innerText = `回复: ${data.trim()}`;  // 去除多余空白
     } catch (error) {
         document.getElementById('response').innerText = `错误: ${error.message}`;
     }
 }
-</script>
 
 </body>
 </html>
