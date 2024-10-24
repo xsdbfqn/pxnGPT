@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皮下男GPT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .chat-container {
+            width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-box {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .send-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-btn:hover {
+            background-color: #0056b3;
+        }
+        .response-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h2>ChatGPT 聊天界面</h2>
+    <textarea class="input-box" id="userInput" rows="4" placeholder="输入你的请求..."></textarea>
+    <button class="send-btn" onclick="sendRequest()">发送请求</button>
+    <div class="response-box" id="response"></div>
+</div>
+
+<script>
+    async function sendRequest() {
+        const prompt = document.getElementById('userInput').value;
+        const apiUrl = `https://dns0000033zzh2aa-dev-ed.develop.my.salesforce-sites.com/services/apexrest/firstwebservice?prompt=${encodeURIComponent(prompt)}&apikey=pxn`;
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('请求失败');
+            }
+            const data = await response.json();
+            document.getElementById('response').innerText = `回复: ${data.result}`;
+        } catch (error) {
+            document.getElementById('response').innerText = `错误: ${error.message}`;
+        }
+    }
+</script>
+
+</body>
+</html>
