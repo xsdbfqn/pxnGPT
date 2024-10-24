@@ -67,7 +67,7 @@
             if (!response.ok) {
                 throw new Error('请求失败');
             }
-            const data = await response.json();
+            const data = await response.text();
             document.getElementById('response').innerText = `${data.result}`;
         } catch (error) {
             document.getElementById('response').innerText = `错误: ${error.message}`;
