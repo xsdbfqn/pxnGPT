@@ -59,20 +59,20 @@
 
 <script>
     async function sendRequest() {
-        const prompt = document.getElementById('userInput').value;
-        const apiUrl = `https://dns0000033zzh2aa-dev-ed.develop.my.salesforce-sites.com/services/apexrest/firstwebservice?prompt=${encodeURIComponent(prompt)}&apikey=pxn`;
+    const prompt = document.getElementById('userInput').value;
+    const apiUrl = `https://dns0000033zzh2aa-dev-ed.develop.my.salesforce-sites.com/services/apexrest/firstwebservice?prompt=${encodeURIComponent(prompt)}&apikey=pxn`;
 
-        try {
-            const response = await fetch(apiUrl);
-            if (!response.ok) {
-                throw new Error('请求失败');
-            }
-            const data = await response.text();
-            document.getElementById('response').innerText = `${data.result}`;
-        } catch (error) {
-            document.getElementById('response').innerText = `错误: ${error.message}`;
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error('请求失败');
         }
+        const data = await response.text();  // 获取纯文本
+        document.getElementById('response').innerText = `${data}`;
+    } catch (error) {
+        document.getElementById('response').innerText = `错误: ${error.message}`;
     }
+}
 </script>
 
 </body>
