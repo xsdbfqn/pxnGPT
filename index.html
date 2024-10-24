@@ -51,7 +51,7 @@
 <body>
 
 <div class="chat-container">
-    <h2>ChatGPT 聊天界面</h2>
+    <h2>聊天界面</h2>
     <textarea class="input-box" id="userInput" rows="4" placeholder="输入你的请求..."></textarea>
     <button class="send-btn" onclick="sendRequest()">发送请求</button>
     <div class="response-box" id="response"></div>
@@ -68,7 +68,7 @@
                 throw new Error('请求失败');
             }
             const data = await response.json();
-            document.getElementById('response').innerText = `回复: ${data.result}`;
+            document.getElementById('response').innerText = `${data.result}`;
         } catch (error) {
             document.getElementById('response').innerText = `错误: ${error.message}`;
         }
